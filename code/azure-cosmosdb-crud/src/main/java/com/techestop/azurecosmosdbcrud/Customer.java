@@ -1,6 +1,7 @@
 package com.techestop.azurecosmosdbcrud;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,8 @@ import java.util.List;
 public class Customer {
 
     @Id
-    private int id;
+    @GeneratedValue
+    private String id;
     private String firstName;
 
     @PartitionKey
@@ -23,8 +25,8 @@ public class Customer {
     private String contactNumber;
     private List<Address> addresses;
 
-    public Customer(int Id, String firstName, String lastName, String contactNumber, List<Address> addresses){
-        this.id = Id;
+    public Customer(String firstName, String lastName, String contactNumber, List<Address> addresses){
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.contactNumber = contactNumber;
