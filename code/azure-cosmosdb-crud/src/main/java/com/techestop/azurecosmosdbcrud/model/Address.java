@@ -1,4 +1,4 @@
-package com.techestop.azurecosmosdbcrud;
+package com.techestop.azurecosmosdbcrud.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

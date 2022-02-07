@@ -1,4 +1,4 @@
-package com.techestop.azurecosmosdbcrud;
+package com.techestop.azurecosmosdbcrud.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;

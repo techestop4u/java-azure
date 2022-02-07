@@ -1,4 +1,4 @@
-package com.techestop.azurecosmosdbcrud;
+package com.techestop.azurecosmosdbcrud.model;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;

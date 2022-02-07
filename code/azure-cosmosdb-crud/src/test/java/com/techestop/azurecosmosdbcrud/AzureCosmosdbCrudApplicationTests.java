@@ -1,5 +1,8 @@
 package com.techestop.azurecosmosdbcrud;
 
+import com.techestop.azurecosmosdbcrud.dto.CustomerCrudResponse;
+import com.techestop.azurecosmosdbcrud.model.Address;
+import com.techestop.azurecosmosdbcrud.model.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Order;

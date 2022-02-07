@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-package com.techestop.azurecosmosdbcrud;
+package com.techestop.azurecosmosdbcrud.config;
 
 import com.azure.cosmos.CosmosClientBuilder;
 import com.azure.cosmos.DirectConnectionConfig;
@@ -9,7 +9,6 @@ import com.azure.spring.data.cosmos.config.CosmosConfig;
 import com.azure.spring.data.cosmos.core.ResponseDiagnostics;
 import com.azure.spring.data.cosmos.core.ResponseDiagnosticsProcessor;
 import com.azure.spring.data.cosmos.repository.config.EnableCosmosRepositories;
-import com.azure.spring.data.cosmos.repository.config.EnableReactiveCosmosRepositories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import org.springframework.lang.Nullable;
 
 @Configuration
 @EnableConfigurationProperties(CosmosProperties.class)
-@EnableCosmosRepositories
+@EnableCosmosRepositories(basePackages = "com.techestop.azurecosmosdbcrud.repository")
 @PropertySource("classpath:application.properties")
 public class CosmosCrudAppConfiguration extends AbstractCosmosConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(CosmosCrudAppConfiguration.class);

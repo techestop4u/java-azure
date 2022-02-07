@@ -1,4 +1,4 @@
-package com.techestop.azurecosmosdbcrud;
+package com.techestop.azurecosmosdbcrud.dto;
 
 import lombok.Getter;
 import lombok.Setter;
