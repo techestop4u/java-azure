@@ -1,0 +1,55 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'com.google.cloud.tools.jib' version '3.2.1'
+}
+
+group = 'com.techestop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '8'
+
+jib {
+	from {
+		image = 'mcr.microsoft.com/java/jre:8-zulu-alpine'
+	}
+	to {
+		image = 'prateekcontainerreg.azurecr.io/storageacc-consumer-1.0.0'
+		auth {
+			username = '00000000-0000-0000-0000-000000000000'
+			password = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldBQVE6RVNQRDpYVlhGOkJIRUw6S1laTzpPU1dTOkNMRDI6SUEzMjpYWUZaOjNSWlY6NEFTVzpIWDJCIn0.eyJqdGkiOiI5MzU5MzI4MC02ZjVlLTQ2NDktYWNmNS1hYzBlMmE1ODE5MjYiLCJzdWIiOiJsaXZlLmNvbSNuaXRpbmFnZy5uaXRra3JAZ21haWwuY29tIiwibmJmIjoxNjU4NTE1ODEwLCJleHAiOjE2NTg1Mjc1MTAsImlhdCI6MTY1ODUxNTgxMCwiaXNzIjoiQXp1cmUgQ29udGFpbmVyIFJlZ2lzdHJ5IiwiYXVkIjoicHJhdGVla2NvbnRhaW5lcnJlZy5henVyZWNyLmlvIiwidmVyc2lvbiI6IjEuMCIsInJpZCI6Ijk3YzM3YjNiZmJkYTRmMjRiOWZhNDUwODhhMmViZGYyIiwiZ3JhbnRfdHlwZSI6InJlZnJlc2hfdG9rZW4iLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsInRlbmFudCI6ImZlZGQ5MWQ0LWEwMmEtNGZkMC05YzVlLTc4YTYwOWJhZGZmZiIsInBlcm1pc3Npb25zIjp7IkFjdGlvbnMiOlsicmVhZCIsIndyaXRlIiwiZGVsZXRlIl0sIk5vdEFjdGlvbnMiOm51bGx9LCJyb2xlcyI6W119.tZWl2OynDTz_lKdT36O1irjE64ltGvZckUMLMxy1y1518nvTW07pgvV2rk3L4Wf02ysrc8MZncDnF4t78E7_20Ia6DgR4W4PCupPaU-0EMqQyuuT3mkti3DsjlIhQqHLxF61YFmqT0XSSAq2vCmcGo6pzSbRB7NWMo5nD3NUhH4_cl8mSNnRPn9DmT2PzWsLc3rUD3u3RS-TUifOEYhLaM20BB-clvPNFNm9YIyCxtZX_A6gEQLE7lER0LxVakQht6lFcZ0SRZxXnhveiaVtcxhyErl_FEvnUyyifnioomzmJzgRXiEA533ujEwf-KQBNCbdrYm-nMgVxftmYKzV1Q'
+		}
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudAzureVersion', "4.2.0")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.azure.spring:spring-cloud-azure-starter-storage-blob'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
