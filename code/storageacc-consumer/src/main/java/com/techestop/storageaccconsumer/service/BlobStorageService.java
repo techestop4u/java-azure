@@ -27,7 +27,7 @@ public class BlobStorageService {
         try{
 
 
-            BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().connectionString("DefaultEndpointsProtocol=https;AccountName=prateekstoreacc01;AccountKey=nUnxZfJeUfrMjW6u3gJMXTKwnQFZ1WJwMee8Svx3sdRGXQl6EZ9JNpRYwY7I/4PY/SPPXbYq7Sag+AStdx4D7w==;EndpointSuffix=core.windows.net").buildClient();
+            BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().connectionString("<connection-string>").buildClient();
 
             BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient("pratcontainer01");
 
